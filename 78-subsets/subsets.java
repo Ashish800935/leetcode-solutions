@@ -7,12 +7,15 @@ class Solution {
         
     }
     void helper(int[] nums,List<List<Integer>>res,List<Integer>ans,int idx){
-        res.add(new ArrayList<>(ans));
-        for(int i=idx;i<nums.length;i++){
-            ans.add(nums[i]);
-            helper(nums,res,ans,i+1);
-            ans.remove(ans.size()-1);
+        if(idx==nums.length){
+            res.add(new ArrayList<>(ans));
+            return ;
         }
-         
+        
+            ans.add(nums[idx]);
+            helper(nums,res,ans,idx+1);
+            ans.remove(ans.size()-1);
+       
+         helper(nums,res,ans,idx+1);
     }
 }
